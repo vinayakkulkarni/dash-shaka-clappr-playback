@@ -1,43 +1,90 @@
 {
-  "name": "dash-shaka-playback",
-  "version": "3.0.3",
+  "name": "dash-shaka-clappr-playback",
+  "version": "0.0.0",
   "description": "clappr dash playback based on shaka player",
-  "main": "./dist/dash-shaka-playback.js",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:clappr/dash-shaka-playback.git"
-  },
-  "scripts": {
-    "build": "webpack",
-    "dist": "yarn lint && yarn build && yarn release",
-    "start": "webpack-dev-server",
-    "release": "webpack",
-    "lint": "eslint src/"
-  },
+  "types": "types/index.d.ts",
+  "main": "dist/dash-shaka-playback.cjs.js",
+  "module": "dist/dash-shaka-playback.esm.js",
+  "unpkg": "dist/dash-shaka-playback.js",
+  "jsdelivr": "dist/dash-shaka-playback.js",
+  "cdn": "dist/dash-shaka-playback.js",
   "files": [
-    "/dist",
-    "/src"
+    "dist",
+    "src",
+    "types"
   ],
-  "author": "Clappr team",
-  "license": "BSD-3-Clause",
+  "scripts": {
+    "build": "rimraf dist && npm run bundle && npm run bundle:min",
+    "bundle": "rollup -c build/rollup.config.ts",
+    "bundle:min": "rollup -c build/rollup.min.config.ts",
+    "prepare": "husky install",
+    "lint": "npm run lint:prettier && npm run lint:eslint && npm run lint:css",
+    "lintfix": "npm run lint:prettier:fix && npm run lint:eslint:fix && npm run lint:css:fix",
+    "lint:js": "npm run lint:eslint && npm run lint:prettier",
+    "lint:eslint": "eslint \"{,!(node_modules|dist)/**/}*.{js,ts}\" --ignore-path .gitignore",
+    "lint:eslint:fix": "eslint --fix \"{,!(node_modules|dist)/**/}*.{js,ts}\" --ignore-path .gitignore",
+    "lint:prettier": "prettier --check \"{,!(node_modules|dist)/**/}*.{js,ts}\" --ignore-path .gitignore",
+    "lint:prettier:fix": "prettier --write \"{,!(node_modules|dist)/**/}*.{js,ts}\" --ignore-path .gitignore",
+    "lint:css": "stylelint \"{,!(node_modules|dist)/**/}*.{css,scss}\" --ignore-path .gitignore",
+    "lint:css:fix": "stylelint --fix \"{,!(node_modules|dist)/**/}*.{css,scss}\" --ignore-path .gitignore",
+    "lint-staged": "lint-staged",
+    "release": "shipjs prepare",
+    "release:auto": "shipjs prepare --yes",
+    "release:dry": "shipjs prepare --dry-run"
+  },
   "peerDependencies": {
     "@clappr/core": "^0.4.17"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
-    "babel-loader": "^8.2.2",
-    "babel-plugin-add-module-exports": "^1.0.4",
-    "eslint": "^7.18.0",
-    "eslint-config-standard": "^16.0.2",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.1.0",
-    "shaka-player": "^3.0.7",
-    "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.2"
-  }
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.8",
+    "@clappr/core": "^0.4.18",
+    "@clappr/hlsjs-playback": "^0.6.0",
+    "@clappr/plugins": "^0.4.13",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "@rollup/plugin-alias": "^3.1.5",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-beep": "^0.2.0",
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@rollup/plugin-sucrase": "^4.0.0",
+    "@types/node": "^16.4.7",
+    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@typescript-eslint/parser": "^4.28.5",
+    "@vinayakkulkarni/prettier-config-vue": "^1.0.0",
+    "eslint": "^7.31.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jsdoc": "^36.0.6",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.1.1",
+    "prettier": "^2.3.2",
+    "rollup": "^2.55.1",
+    "rollup-plugin-scss": "^3.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "sass": "^1.36.0",
+    "shipjs": "^0.23.3",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^22.0.0",
+    "shaka-player": "^3.2.0",
+    "typescript": "^4.3.5"
+  },
+  "author": {
+    "name": "Vinayak Kulkarni",
+    "email": "inbox.vinayak@gmail.com",
+    "url": "https://vinayakkulkarni.dev"
+  },
+  "license": "./LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:vinayakkulkarni/dash-shaka-playback.git"
+  },
+  "private": false,
+  "sideEffects": false,
+  "bugs": {
+    "url": "https://github.com/vinayakkulkarni/dash-shaka-clappr-playback/issues"
+  },
+  "homepage": "https://github.com/vinayakkulkarni/dash-shaka-clappr-playback#readme"
 }

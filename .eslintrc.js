@@ -1,30 +1,30 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "commonjs": true,
-        "es6": true,
-        "node": true,
+  root: true,
+  env: {
+    browser: true,
+    es6: true,
+    node: true,
+  },
+  parserOptions: {
+    parser: '@typescript-eslint/parser',
+    ecmaVersion: 2020,
+    sourceType: 'module',
+    lib: ['es2020'],
+    ecmaFeatures: {
+      jsx: true,
+      tsx: true,
     },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-        "sourceType": "module"
-    },
-    "rules": {
-        "indent": [
-            "error",
-            2
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "never"
-        ]
-    }
+  },
+  plugins: ['jsdoc', '@typescript-eslint', 'prettier'],
+  extends: [
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:prettier/recommended',
+    'plugin:jsdoc/recommended',
+    'prettier',
+  ],
+  // add your custom rules here
+  rules: {
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+  },
 };

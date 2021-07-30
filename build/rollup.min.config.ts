@@ -30,7 +30,6 @@ export default {
     banner,
     globals: {
       '@clappr/core': 'core',
-      'shaka-player': 'shaka',
     },
   },
   plugins: [
@@ -68,5 +67,5 @@ export default {
     }),
     beep(),
   ],
-  external: ['@clappr/core', 'shaka-player'],
+  external: ['@clappr/core'],
 };

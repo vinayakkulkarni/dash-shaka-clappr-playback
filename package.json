@@ -32,6 +32,9 @@
     "release:auto": "shipjs prepare --yes",
     "release:dry": "shipjs prepare --dry-run"
   },
+  "dependencies": {
+    "shaka-player": "^3.2.0"
+  },
   "peerDependencies": {
     "@clappr/core": "^0.4.17"
   },
@@ -64,11 +67,11 @@
     "rollup-plugin-scss": "^3.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "sass": "^1.36.0",
+    "shaka-player": "^3.2.0",
     "shipjs": "^0.23.3",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^22.0.0",
-    "shaka-player": "^3.2.0",
     "typescript": "^4.3.5"
   },
   "author": {

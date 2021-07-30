@@ -1,5 +1,5 @@
 import { Events, HTML5Video, Log, PlayerError } from '@clappr/core';
-import shaka from 'shaka-player';
+import * as shaka from 'shaka-player';
 
 const SEND_STATS_INTERVAL_MS = 30 * 1e3;
 const DEFAULT_LEVEL_AUTO = -1;

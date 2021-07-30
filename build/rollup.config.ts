@@ -74,10 +74,9 @@ export default {
       banner,
       globals: {
         '@clappr/core': 'core',
-        'shaka-player': 'shaka',
       },
     },
   ],
   plugins,
-  external: ['@clappr/core', 'shaka-player'],
+  external: ['@clappr/core'],
 };

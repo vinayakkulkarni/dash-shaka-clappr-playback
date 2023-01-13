@@ -43,7 +43,7 @@
     "@babel/preset-env": "^7.14.8",
     "@clappr/core": "^0.4.18",
     "@clappr/hlsjs-playback": "^0.6.0",
-    "@clappr/plugins": "^0.4.13",
+    "@clappr/plugins": "^0.5.0",
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
     "@rollup/plugin-alias": "^3.1.5",
